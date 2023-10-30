@@ -30,7 +30,7 @@ scripting. The specific list of projects contained follows:
 
 ## Author :
 
-* **YOUSSEF RACHIDI** <[Tolulope05](https://github.com/joe-0009)>
+* **YOUSSEF RACHIDI** <[Joe-0009](https://github.com/joe-0009)>
 
 ## Acknowledgements :pray:
 
