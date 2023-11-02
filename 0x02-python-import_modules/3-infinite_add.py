@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-if __name__ = "__main__":
+if __name__ == "__main__":
 
     import sys
 
@@ -9,4 +9,4 @@ if __name__ = "__main__":
 
     for i in range(count):
         result += int(sys.argv[i + 1])
-    print("{}".format(result))
+    print(result)
