@@ -9,4 +9,3 @@ def uniq_add(my_list=None):
     total = sum(unique_elements)
 
     return total
-
