@@ -5,7 +5,8 @@ def roman_to_int(roman_string):
         return 0
 
     # Define the Roman numerals and their integer value
-    roman_numerals = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}
+    roman_numerals = {'I': 1, 'V': 5, 'X': 10, 'L': 50,
+                      'C': 100, 'D': 500, 'M': 1000}
 
     # Initialize the previous value and total
     prev_value = 0
