@@ -5,11 +5,11 @@
 
 class Square:
     """Represent a square."""
-    
+
     def __init__(self, size):
         """Initialize a new Square.
 
         Args:
             size (int): The size of the new square.
         """
-        sekf.__size = size
+        self.__size = size
