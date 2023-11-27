@@ -51,16 +51,17 @@ class Rectangle:
             return (0)
         return ((self.__width * 2) + (self.__height * 2))
 
-
     def __str__(self):
-        """prints string version of triangle.
+        """Return the printable representation of the Rectangle.
 
-        Represents the rectangke with # character.
+        Represents the rectangle with the # character.
         """
-        rect = ""
+        if self.__width == 0 or self.__height == 0:
+            return ("")
+
+        rect = []
         for i in range(self.__height):
-            for j in range(self.width):
-                rect = rect + "#"
+            [rect.append('#') for j in range(self.__width)]
             if i != self.__height - 1:
-                rect = rect + "\n"
-        return rect
+                rect.append("\n")
+        return ("".join(rect))
