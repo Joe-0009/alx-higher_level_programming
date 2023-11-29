@@ -1,8 +1,10 @@
 How to Use 4-print_square.py
 ============================
 
+This module defines a square-printing function ``print_square(size)``.
+
 Usage:
-------
+=====
 
 	>>> print_square = __import__(4-print_square').print_square
 
