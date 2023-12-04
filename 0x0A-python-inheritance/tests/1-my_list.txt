@@ -1,12 +1,9 @@
-test for 1-my_list.txt
-----------------------
+Test for 1-my_list.py
+-------------------------------------------
 
 case 0: import
-
->>> my_list = __import__('1-my_list').MyList
+>>> MyList = __import__('1-my_list').MyList
 >>>
-
---------------------------------------------
 
 case 1: common case
 
@@ -24,7 +21,6 @@ case 1: common case
 [1, 4, 2, 3, 5]
 >>>
 
--------------------------------------------
 
 case 2: not defined object
 
@@ -35,7 +31,6 @@ Traceback (most recent call last):
 NameError: name 'my_list2' is not defined
 >>>
 
--------------------------------------------
 
 case 3: passed a list
 
@@ -45,7 +40,6 @@ case 3: passed a list
 [1, 4, 9]
 >>>
 
--------------------------------------------
 
 case 4: empty list
 
@@ -55,7 +49,6 @@ case 4: empty list
 []
 >>>
 
--------------------------------------------
 
 case 5: unique number
 
@@ -67,7 +60,6 @@ case 5: unique number
 [1]
 >>>
 
--------------------------------------------
 
 case 6: same number
 
@@ -80,7 +72,6 @@ case 6: same number
 [1, 1, 1, 1]
 >>>
 
--------------------------------------------
 
 case 7: parent object
 >>> my_list = [1, 2, 3]
@@ -90,7 +81,6 @@ Traceback (most recent call last):
 AttributeError: 'list' object has no attribute 'print_sorted'
 >>>
 
--------------------------------------------
 
 case 8: negative numbers
 
@@ -104,3 +94,4 @@ case 8: negative numbers
 >>> my_list.print_sorted()
 [-5, -1, 1, 5, 51]
 >>>
+
