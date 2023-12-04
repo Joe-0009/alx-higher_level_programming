@@ -1,8 +1,8 @@
-tests for '7-base_geometry.py'
-------------------------------
+The ``7-base_geometry`` module
+==============================
 
-usage: 'BaseGeometry'
----------------------
+Using ``BaseGeometry``
+----------------------
 
 Importing class from the module:
     >>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
