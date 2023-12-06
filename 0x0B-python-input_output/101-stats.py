@@ -6,19 +6,26 @@ prints the following statistics:
     - Total file size up to that point.
     - Count of read status codes up to that point.
 """
+
+
 import sys
+
 
 """init metrics"""
 
 total_size = 0
-status_count = {200:0, 301:0, 400:0, 401:0, 403:0, 404:0, 405:0, 500:0}
+status_count = {200: 0, 301: 0, 400: 0, 401: 0, 403: 0, 404: 0, 405: 0, 500: 0}
 line_processed = 0
+
 
 def print_metrics():
     """pritns the metrics"""
+
     print(f"Total file size: {total_size}")
     for code in sorted(status_count):
         print(f"{code}: {status_code_count[code]}")
+
+
 try:
     for line in sys.stdin:
         parts = line.split()
