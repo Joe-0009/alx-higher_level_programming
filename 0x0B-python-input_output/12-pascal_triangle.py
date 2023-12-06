@@ -3,12 +3,9 @@
 
 
 def pascal_triangle(n):
-    """Defines pascale triangle.
+    """Represent Pascal's Triangle of size n.
 
-    Args:
-        n (int): the length of the triangle
-    Returns:
-        list of list that represent the trianlgle.
+    Returns a list of lists of integers representing the triangle.
     """
     if n <= 0:
         return []
