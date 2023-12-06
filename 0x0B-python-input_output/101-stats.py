@@ -7,29 +7,25 @@ prints the following statistics:
     - Count of read status codes up to that point.
 """
 
-
 import sys
 
-
-"""init metrics"""
-
+# Initialize metrics
 total_size = 0
 status_count = {200: 0, 301: 0, 400: 0, 401: 0, 403: 0, 404: 0, 405: 0, 500: 0}
 lines_processed = 0
 
 
 def print_metrics(total_size, status_count):
-    """pritns the metrics"""
+    """prints the metrics"""
 
     print(f"Total file size: {total_size}")
     for code in sorted(status_count):
-        print(f"{code}: {status_code_count[code]}")
+        print(f"{code}: {status_count[code]}")
 
 
 try:
     for line in sys.stdin:
         try:
-
             parts = line.split()
             status = int(parts[-2])
             size = int(parts[-1])
@@ -44,3 +40,4 @@ try:
             pass
 except KeyboardInterrupt:
     print_metrics(total_size, status_count)
+
