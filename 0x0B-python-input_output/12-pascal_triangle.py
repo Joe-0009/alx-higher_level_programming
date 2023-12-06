@@ -14,11 +14,12 @@ def pascal_triangle(n):
     for i in range(n):
         row = []
         for j in range(i + 1):
-            if j = 0 or j = i:
+            if j == 0 or j == i:
                 row.append(1)
             else:
                 left_upper = triangle[i - 1][j - 1]
                 right_upper = triangle[i - 1][j]
                 row.append(left_upper + right_upper)
         triangle.append(row)
+
     return triangle
