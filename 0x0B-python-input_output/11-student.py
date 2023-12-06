@@ -39,6 +39,5 @@ class Student:
         Args:
             json (dict): The key/value pairs to replace attributes with.
         """
-        self.first_name = json[first_name]
-        self.last_name = json[last_name]
-        self.age = json[age]
+        for i, k in json.items():
+            setattr(self, i, k)
