@@ -28,16 +28,19 @@ def print_metrics():
 
 try:
     for line in sys.stdin:
-        parts = line.split()
-        status = int(parts[-2])
-        size = int(parts[-1])
+        try:
 
-        status_count[status] += 1
-        lines_processed += 1
-        total_size += size
+            parts = line.split()
+            status = int(parts[-2])
+            size = int(parts[-1])
 
-        if lines_processed % 10 == 0:
-            print_metrics()
+            status_count[status] += 1
+            lines_processed += 1
+            total_size += size
 
+            if lines_processed % 10 == 0:
+                print_metrics()
+        except ValueError:
+            pass
 except KeyboardInterrupt:
     print_metrics()
