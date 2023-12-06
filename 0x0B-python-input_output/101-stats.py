@@ -6,38 +6,41 @@ prints the following statistics:
     - Total file size up to that point.
     - Count of read status codes up to that point.
 """
+if __name__ == "__main__":
+    import sys
 
-import sys
-
-# Initialize metrics
-total_size = 0
-status_count = {200: 0, 301: 0, 400: 0, 401: 0, 403: 0, 404: 0, 405: 0, 500: 0}
-lines_processed = 0
-
-
-def print_metrics(total_size, status_count):
-    """prints the metrics"""
-
-    print(f"Total file size: {total_size}")
-    for code in sorted(status_count):
-        print(f"{code}: {status_count[code]}")
+    total_size = 0
+    status_count = {200: 0, 301: 0, 400: 0, 401: 0, 403: 0, 404: 0, 405: 0, 500: 0}
+    lines_processed = 0
 
 
-try:
-    for line in sys.stdin:
-        try:
-            parts = line.split()
-            status = int(parts[-2])
-            size = int(parts[-1])
+    def print_metrics(total_size, status_count):
+        """Print accumulated metrics.
 
-            status_count[status] += 1
-            lines_processed += 1
-            total_size += size
+        Args:
+            total_size (int): The accumulated read file size.
+            status_counts (dict): The accumulated count of status codes.
+        """
 
-            if lines_processed % 10 == 0:
-                print_metrics(total_size, status_count)
-        except ValueError:
-            pass
-except KeyboardInterrupt:
-    print_metrics(total_size, status_count)
+        print(f"Total file size: {total_size}")
+        for code in sorted(status_count):
+            print(f"{code}: {status_count[code]}")
 
+
+    try:
+        for line in sys.stdin:
+            try:
+                parts = line.split()
+                status = int(parts[-2])
+                size = int(parts[-1])
+
+                status_count[status] += 1
+                lines_processed += 1
+                total_size += size
+
+                if lines_processed % 10 == 0:
+                    print_metrics(total_size, status_count)
+            except ValueError:
+                pass
+    except KeyboardInterrupt:
+        print_metrics(total_size, status_count)
