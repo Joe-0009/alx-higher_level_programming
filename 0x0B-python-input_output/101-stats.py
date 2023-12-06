@@ -6,41 +6,54 @@ prints the following statistics:
     - Total file size up to that point.
     - Count of read status codes up to that point.
 """
+
+
+def print_metrics(size, status_codes):
+    """Print accumulated metrics.
+
+    Args:
+        size (int): The accumulated read file size.
+        status_codes (dict): The accumulated count of status codes.
+    """
+    print("File size: {}".format(size))
+    for key in sorted(status_codes):
+        print("{}: {}".format(key, status_codes[key]))
+
+
 if __name__ == "__main__":
     import sys
 
-    total_size = 0
-    status_count = {200: 0, 301: 0, 400: 0, 401: 0, 403: 0, 404: 0, 405: 0, 500: 0}
-    lines_processed = 0
-
-
-    def print_metrics(total_size, status_count):
-        """Print accumulated metrics.
-
-        Args:
-            total_size (int): The accumulated read file size.
-            status_counts (dict): The accumulated count of status codes.
-        """
-
-        print(f"Total file size: {total_size}")
-        for code in sorted(status_count):
-            print(f"{code}: {status_count[code]}")
-
+    size = 0
+    status_count = {}
+    valid_codes = ['200', '301', '400', '401', '403', '404', '405', '500']
+    count = 0
 
     try:
         for line in sys.stdin:
+            if count == 10:
+                print_metrics(size, status_count)
+                count = 1
+            else:
+                count += 1
+
+            line = line.split()
+
             try:
-                parts = line.split()
-                status = int(parts[-2])
-                size = int(parts[-1])
-
-                status_count[status] += 1
-                lines_processed += 1
-                total_size += size
-
-                if lines_processed % 10 == 0:
-                    print_metrics(total_size, status_count)
-            except ValueError:
+                size += int(line[-1])
+            except (IndexError, ValueError):
                 pass
+
+            try:
+                if line[-2] in valid_codes:
+                    if status_count.get(line[-2], -1) == -1:
+                        status_count[line[-2]] = 1
+                    else:
+                        status_count[line[-2]] += 1
+            except IndexError:
+                pass
+
+        print_metrics(size, status_count)
+
     except KeyboardInterrupt:
-        print_metrics(total_size, status_count)
+        print_metrics(size, status_count)
+        raise
