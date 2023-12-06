@@ -18,7 +18,7 @@ status_count = {200: 0, 301: 0, 400: 0, 401: 0, 403: 0, 404: 0, 405: 0, 500: 0}
 line_processed = 0
 
 
-def print_metrics():
+def print_metrics(total_size, status_count):
     """pritns the metrics"""
 
     print(f"Total file size: {total_size}")
@@ -39,8 +39,8 @@ try:
             total_size += size
 
             if lines_processed % 10 == 0:
-                print_metrics()
+                print_metrics(total_size, status_count)
         except ValueError:
             pass
 except KeyboardInterrupt:
-    print_metrics()
+    print_metrics(total_size, status_count)
