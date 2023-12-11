@@ -110,7 +110,6 @@ class Base:
             list_rectangles (list): A list of Rectangle objects to draw.
             list_squares (list): A list of Square objects to draw.
         """
-        def draw(list_rectangles, list_squares):
         screen = turtle.Screen()
         screen.title("Rectangles and Squares")
         screen.setup(600, 400)
