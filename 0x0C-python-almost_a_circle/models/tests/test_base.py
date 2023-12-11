@@ -20,3 +20,6 @@ class TestBaseMethods(unittest.TestCase):
         """ Test assigned id """
         new = Base(1)
         self.assertEqual(new.id, 1)
+
+if __name__ == "__main__":
+    unittest.main()
