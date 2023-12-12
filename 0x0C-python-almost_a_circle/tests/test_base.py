@@ -30,3 +30,16 @@ class TestBaseMethods(unittest.TestCase):
 
     def test_dict_id(self):
         self.assertEqual({"a": 1, "b": 2}, Base({"a": 1, "b": 2}).id)
+
+    def test_str_id(self):
+        self.assertEqual("hello", Base("hello").id)
+
+    def test_set_id(self):
+        self.assertEqual({1, 2, 3}, Base({1, 2, 3}).id)
+
+    def test_NaN_id(self):
+        self.assertNotEqual(float('nan'), Base(float('nan')).id)
+
+    def test_two_args(self):
+        with self.assertRaises(TypeError):
+            Base(1, 2)
